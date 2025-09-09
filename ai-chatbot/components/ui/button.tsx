@@ -3,21 +3,24 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "default" | "outline" | "ghost";
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: "default" | "outline" | "ghost" | "google" | "facebook";
   size?: "default" | "icon";
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "default", size = "default", disabled, ...props }, ref) => {
     const base =
-    "px-4 py-2 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer disabled:pointer-events-none disabled:opacity-100";
+      "px-4 py-2 rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer disabled:pointer-events-none disabled:opacity-100";
 
     const variants = {
       default: "bg-blue-600 text-white hover:bg-blue-700",
       outline:
         "bg-white text-slate-800 border border-slate-300 hover:bg-blue-50 hover:border-blue-400",
       ghost: "bg-transparent text-blue-600 hover:bg-blue-100",
+      google: "bg-red-500 text-white hover:bg-red-600", // ✅ Google style
+      facebook: "bg-blue-800 text-white hover:bg-blue-900", // ✅ Facebook style
     };
 
     const sizes = {
@@ -26,9 +29,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     const disabledStyles = disabled
-  ? "pointer-events-none cursor-not-allowed"
-  : "cursor-pointer";
-
+      ? "pointer-events-none cursor-not-allowed"
+      : "cursor-pointer";
 
     return (
       <button

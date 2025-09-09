@@ -7,67 +7,76 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Index = () => {
   const router=useRouter();
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-
-  //   // Redirect to landing page
-    
-  // };
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
       <Card className="w-full max-w-md">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl text-blue-600">Sign In</CardTitle>
+          <CardTitle className="text-2xl font-bold text-primary">Create Account</CardTitle>
           <p className="text-muted-foreground mt-2">
-            Enter your email and password to sign in to your account.
+            Enter your the following fields to create an account.
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
           <form className="space-y-4">
             <div className="space-y-2">
+              <Label htmlFor="fullname">Full name</Label>
+              <Input
+                id="fullname"
+                type="text"
+                placeholder="Full name"
+              />
+            </div>
+
+            <div className="space-y-2">
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="sethpriyam0@gmail.com"
+                placeholder="Email"
               />
             </div>
             
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
-                <button 
-                  type="button"
-                  className="text-sm hover:underline text-blue-600"
-                >
-                  Forgot password?
-                </button>
+                <Input
+                  id="password"
+                  type="password"
+                  placeholder="Password"
+                />
               </div>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Password"
-              />
+              <div className="space-y-2">
+                <Label htmlFor="confirm-password">Confirm Password</Label>
+                <Input
+                  id="confirm-password"
+                  type="password"
+                  placeholder="Confirm Password"
+                />
+              </div>
             </div>
 
-            <Button type="submit" className="w-full"
-            onClick={(e)=>{
-              e.preventDefault()
-              router.push('/login')
-            }}
-            >
-              Sign In
+            <Button type="submit" className="w-full" >
+              Sign up
             </Button>
           </form>
 
+          <div className="text-center text-xs text-muted-foreground">
+            By signing up, you agree to our{" "}
+            <button className="hover:underline">terms of service</button>{" "}
+            and{" "}
+            <button className="hover:underline">privacy policy</button>
+            .
+          </div>
+
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              Don't have an account?{" "}
+              Already have an account?{" "}
               <button className="hover:underline font-medium text-blue-600"
-              onClick={()=>{
-                router.push('/Register')
-              }}>
-                Register now!
+              onClick={(e)=>{
+                e.preventDefault();
+                router.push("/")
+            }}>
+                Sign In
               </button>
             </p>
           </div>
@@ -82,7 +91,7 @@ const Index = () => {
           </div>
 
           <div className="space-y-3">
-            <Button variant="outline" className="flex w-full justify-center items-center">
+            <Button variant="outline" className="flex justify-center items-center w-full">
               <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24">
                 <path
                   fill="currentColor"
@@ -104,20 +113,12 @@ const Index = () => {
               Sign in with Google
             </Button>
 
-            <Button variant="default" className="flex w-full justify-center items-center">
-              <svg className="w-4 h-4 mr-2 " fill="currentColor" viewBox="0 0 24 24">
+            <Button variant="default" className="flex justify-center items-center w-full">
+              <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
               Sign in with Facebook
             </Button>
-          </div>
-
-          <div className="text-center text-xs text-muted-foreground">
-            By signing in, you agree to our{" "}
-            <button className="hover:underline">terms of service</button>{" "}
-            and{" "}
-            <button className="hover:underline">privacy policy</button>
-            .
           </div>
         </CardContent>
       </Card>
